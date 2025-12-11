@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas Gowda S - Full-Stack Developer & AI Engineer</title>
+    <meta name="description" content="Computer Science Engineering graduate specializing in AI-powered applications, Full-Stack Development, and Machine Learning. Skilled in Python, JavaScript, React, Django, and TensorFlow.">
+    <meta name="keywords" content="Vikas Gowda S, Full-Stack Developer, AI Engineer, Machine Learning, Python, JavaScript, React, Portfolio">
+    <meta property="og:title" content="Vikas Gowda S - Full-Stack Developer & AI Engineer">
+    <meta property="og:description" content="Computer Science Engineering graduate specializing in AI-powered applications and scalable machine learning pipelines.">
+    <meta name="twitter:title" content="Vikas Gowda S - Full-Stack Developer & AI Engineer">
+    <meta name="twitter:description" content="Computer Science Engineering graduate specializing in AI-powered applications and scalable machine learning pipelines.">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --dark-bg: #0f0f23;
+            --dark-surface: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --neon-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+    }
+
+    @layer base {
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .neon-glow {
+            box-shadow: var(--neon-glow);
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateAvatar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes avatarGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px rgba(59, 130, 246, 0.5),
+                    0 0 20px rgba(139, 92, 246, 0.3),
+                    0 0 30px rgba(236, 72, 153, 0.2);
+                filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4));
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px rgba(59, 130, 246, 0.8),
+                    0 0 40px rgba(139, 92, 246, 0.6),
+                    0 0 60px rgba(236, 72, 153, 0.4);
+                filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.7));
+            }
+        }
+
+        @keyframes projectGlow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .glow-pulse {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        .rotate-border {
+            animation: rotate 8s linear infinite;
+        }
+
+        .rotate-avatar {
+            animation: rotateAvatar 20s linear infinite;
+        }
+
+        .avatar-glow {
+            animation: avatarGlow 3s ease-in-out infinite;
+        }
+
+        .project-hover-glow {
+            animation: projectGlow 2s ease-in-out infinite;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @layer components {
+        .btn-primary {
+            @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg;
+        }
+
+        .btn-outline {
+            @apply px-6 py-3 border-2 border-blue-500 text-blue-500 rounded-full font-medium transition-all duration-300 hover:bg-blue-500 hover:text-white hover:scale-105;
+        }
+
+        .card-3d {
+            @apply bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 transition-all duration-300;
+            transform-style: preserve-3d;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-container {
+            @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16;
+        }
+
+        .section-padding {
+            @apply py-8 md:py-12;
+        }
+
+        .hero-section {
+            @apply py-16 md:py-20;
+        }
+    }
+
+    @layer utilities {
+        .transform-gpu {
+            transform: translateZ(0);
+        }
+        
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+    }
+    </style>
+</head>
+<body class="bg-[var(--dark-bg)] text-[var(--text-primary)]">
+    <div id="particles-background"></div>
+    <div id="root"></div>
+
+    <script type="text/babel" src="components/Navbar.js"></script>
+    <script type="text/babel" src="components/Hero.js"></script>
+    <script type="text/babel" src="components/Stats.js"></script>
+    <script type="text/babel" src="components/About.js"></script>
+    <script type="text/babel" src="components/Skills.js"></script>
+    <script type="text/babel" src="components/Projects.js"></script>
+    <script type="text/babel" src="components/Certificates.js"></script>
+    <script type="text/babel" src="components/Contact.js"></script>
+    <script type="text/babel" src="components/Footer.js"></script>
+    <script type="text/babel" src="utils/particles.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
